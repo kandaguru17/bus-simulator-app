@@ -1,0 +1,35 @@
+.bus-east{
+    background: url(https://previews.123rf.com/images/anatolir/anatolir1809/anatolir180901705/108152491-top-view-school-bus-icon-flat-illustration-of-top-view-school-bus-vector-icon-for-web-design.jpg) no-repeat;
+    width:32px; height:32px;
+}
+
+.bus-west{
+
+    background: url(https://previews.123rf.com/images/anatolir/anatolir1809/anatolir180901705/108152491-top-view-school-bus-icon-flat-illustration-of-top-view-school-bus-vector-icon-for-web-design.jpg) no-repeat;
+    width:32px; height:32px;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  
+}
+
+.bus-north {
+    background: url(https://previews.123rf.com/images/anatolir/anatolir1809/anatolir180901705/108152491-top-view-school-bus-icon-flat-illustration-of-top-view-school-bus-vector-icon-for-web-design.jpg) no-repeat;
+    width:32px; height:32px;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+.bus-south {
+    background: url(https://previews.123rf.com/images/anatolir/anatolir1809/anatolir180901705/108152491-top-view-school-bus-icon-flat-illustration-of-top-view-school-bus-vector-icon-for-web-design.jpg) no-repeat;
+    width:32px; height:32px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
