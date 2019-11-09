@@ -24,11 +24,15 @@ export default class Carpark extends Component {
 
     }
 
-    handleChange = (e) => {
+    handleInputChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
             isPlaced: false
         });
+    }
+
+    handleDropDwn=(value)=>{
+        this.setState({busFace:value});
     }
 
     handleSubmit = (e) => {
@@ -39,7 +43,6 @@ export default class Carpark extends Component {
             busFace: prevState.busFace ? prevState.busFace.toUpperCase() : 'EAST',
             isPlaced: true
         }))
-
     }
 
     handleBusMove = () => {
@@ -48,7 +51,6 @@ export default class Carpark extends Component {
         if (currentFace === 'SOUTH') return this.setState(prevState => ({ busY: prevState.busY - 1 }));
         if (currentFace === 'EAST') return this.setState(prevState => ({ busX: prevState.busX + 1 }));
         if (currentFace === 'WEST') return this.setState(prevState => ({ busX: prevState.busX - 1 }));
-
     }
 
 
@@ -56,17 +58,22 @@ export default class Carpark extends Component {
         const currentFace = this.state.busFace;
         if (currentFace === 'NORTH') return this.setState({ busFace: turn === 'RIGHT' ? `EAST` : `WEST` });
         if (currentFace === 'SOUTH') return this.setState({ busFace: turn === 'RIGHT' ? `WEST` : `EAST` });
-        if (currentFace === 'EAST') return this.setState({ busFace: turn === 'RIGHT' ? `SOUTH` : `NORTH` });
+        if (currentFace === 'EAST') return this.setState({ busFace: turn === 'RIGHT' ? `SOUTH` : `NORTH` })
         if (currentFace === 'WEST') return this.setState({ busFace: turn === 'RIGHT' ? `NORTH` : `SOUTH` });
 
     }
-
 
     render() {
 
         return (
             <>
-                <SimulatorButtons handleChange={ this.handleChange } handleSubmit={ this.handleSubmit } handleBusMove={ this.handleBusMove } handleBusTurn={ this.handleBusTurn } { ...this.state } />
+                <SimulatorButtons handleInputChange={ this.handleInputChange } 
+                handleSubmit={ this.handleSubmit } 
+                handleBusMove={ this.handleBusMove } 
+                handleBusTurn={ this.handleBusTurn } 
+                handleDropDwn={this.handleDropDwn}
+                { ...this.state } />
+
                 <div className="grid-container" >
                     { this.renderCarpark() }
                 </div>

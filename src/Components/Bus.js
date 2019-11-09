@@ -3,7 +3,7 @@ import '../stylesheets/Bus.css';
 
 export default class Bus extends Component {
 
-    IMG_CDN = 'https://previews.123rf.com/images/anatolir/anatolir1809/anatolir180901705/108152491-top-view-school-bus-icon-flat-illustration-of-top-view-school-bus-vector-icon-for-web-design.jpg'
+    IMG_CDN = 'https://res.cloudinary.com/dyzh4obz4/image/upload/v1573298155/bus_gecxxn.png';
 
     render() {
         
@@ -16,7 +16,7 @@ export default class Bus extends Component {
 
         const face = busFaceClasses[this.props.busFace];
         return (
-            <img className={ `${face}` } src={ `${this.IMG_CDN}` } style={ { width: '100px', height: '100px' } } alt='bus'></img>
+            <img className={ `${face}` } src={ `${this.IMG_CDN}` } style={ { width: '200px', height: '90px' } } alt='bus'></img>
         )
     }
 }

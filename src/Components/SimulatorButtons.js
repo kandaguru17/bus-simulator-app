@@ -3,8 +3,8 @@ import { Button, Form, Segment, Grid, Divider, Header, Icon, Dropdown } from 'se
 
 export default class SimulatorButtons extends Component {
 
-    handleChange = (e) => {
-        this.props.handleChange(e);
+    handleInputChange = (e) => {
+        this.props.handleInputChange(e);
     }
 
     handleSubmit = (e) => {
@@ -28,24 +28,31 @@ export default class SimulatorButtons extends Component {
 
     renderDropDwnOptions = () => {
         const faces = ['NORTH', 'SOUTH', 'EAST', 'WEST'];
-        return faces.map(item=>{
+        return faces.map((item,i)=>{
             return {
-                key:item,
+                key:i,
                 text:item,
                 value:item
-            }
+           }
         })
 
+    }
+
+    handleDropDwn=(e,{value})=>{
+    this.props.handleDropDwn(value);
     }
 
 
     render() {
 
-        const { busX, busY, isPlaced } = this.props;
-        const error = (busX > 4 || busX < 0) || (busY > 4 || busY <0) || !isPlaced ;
-        let errorX = busX > 4 || busX < 0 ? { content: 'Out of bound',pointing:'below' } : false;
+        const { busX, busY, isPlaced,busFace } = this.props;
+        
+        //error condition for disabling the controllers
+        const error =  ((busX > 4 || busX < 0) || (busY > 4 || busY < 0));
+       //field validations
+        let errorX =busX > 4 || busX < 0 ? { content: 'Out of bound',pointing:'below' } : false;
         let errorY = busY > 4 || busY < 0 ? { content: 'Out of bound',pointing:'below' } : false;
-
+        
         return (
             <Segment placeholder>
                 <Grid columns={ 2 } stackable textAlign='center'>
@@ -54,13 +61,14 @@ export default class SimulatorButtons extends Component {
                         <Grid.Column>
                             <Form onSubmit={ this.handleSubmit } >
 
-                                <Form.Field control="input" type="number" placeholder="x-value" onChange={ this.handleChange } name='busX' width={ 4 } autoComplete="off" error={ errorX } />
+                                <Form.Field control="input" type="number" placeholder="x-value" onChange={ this.handleInputChange } name='busX' width={ 4 } autoComplete="off" error={ errorX } required/>
 
-                                <Form.Field control="input" type="number" placeholder="y-value" onChange={ this.handleChange } name='busY' width={ 4 } autoComplete="off" error={ errorY } />
+                                <Form.Field control="input" type="number" placeholder="y-value" onChange={ this.handleInputChange } name='busY' width={ 4 } autoComplete="off" error={ errorY } required/>
 
-                                {/* <Form.Field control="input" type="text" placeholder="Facing direction" onChange={ this.handleChange } name='busFace' width={ 4 } autoComplete="off" /> */}
+                                {/* <Form.Field control="input" type="text" placeholder="Facing direction" onChange={ this.handleChange } name='busFace' width={ 4 } autoComplete="off" required/> */}
 
-                                <Dropdown  selection name='busFace' width={ 3 }  onChange={ this.handleChange } placeholder="Facing direction" options={this.renderDropDwnOptions()} style={{marginBottom:'25px'}} />
+                                <Dropdown search name='busFace' width={ 3 }  onChange={ this.handleDropDwn } placeholder="Facing direction" options={this.renderDropDwnOptions()} style={{marginBottom:'25px'}}
+                                />
 
                                 <Form.Field control={ Button } centered="true" primary disabled={ error }  >place</Form.Field>
 
