@@ -1,6 +1,5 @@
 import React from 'react';
-import './App.css';
-import Carpark from './Components/Carpark';
+import Carpark from './Carpark';
 
 function App() {
   return (

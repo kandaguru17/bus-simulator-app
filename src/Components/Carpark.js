@@ -27,16 +27,16 @@ export default class Carpark extends Component {
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
-            //isPlaced: true
+            isPlaced: false
         });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState(prevstate => ({
-            busX: parseInt(prevstate.busX),
-            busY: parseInt(prevstate.busY),
-            busFace: prevstate.busFace.toUpperCase(),
+        this.setState(prevState => ({
+            busX: parseInt(prevState.busX),
+            busY: parseInt(prevState.busY),
+            busFace: prevState.busFace ? prevState.busFace.toUpperCase() : 'EAST',
             isPlaced: true
         }))
 
@@ -44,7 +44,6 @@ export default class Carpark extends Component {
 
     handleBusMove = () => {
         const currentFace = this.state.busFace;
-        console.log(currentFace);
         if (currentFace === 'NORTH') return this.setState(prevState => ({ busY: prevState.busY + 1 }));
         if (currentFace === 'SOUTH') return this.setState(prevState => ({ busY: prevState.busY - 1 }));
         if (currentFace === 'EAST') return this.setState(prevState => ({ busX: prevState.busX + 1 }));
@@ -53,10 +52,12 @@ export default class Carpark extends Component {
     }
 
 
-    handleOutofBoundException = () => {
-        const { busX, busY } = this.state;
-        if (busX > 4 || busY > 4)
-            return alert('this is wrong!!')
+    handleBusTurn = (turn) => {
+        const currentFace = this.state.busFace;
+        if (currentFace === 'NORTH') return this.setState({ busFace: turn === 'RIGHT' ? `EAST` : `WEST` });
+        if (currentFace === 'SOUTH') return this.setState({ busFace: turn === 'RIGHT' ? `WEST` : `EAST` });
+        if (currentFace === 'EAST') return this.setState({ busFace: turn === 'RIGHT' ? `SOUTH` : `NORTH` });
+        if (currentFace === 'WEST') return this.setState({ busFace: turn === 'RIGHT' ? `NORTH` : `SOUTH` });
 
     }
 
@@ -65,7 +66,7 @@ export default class Carpark extends Component {
 
         return (
             <>
-                <SimulatorButtons handleChange={ this.handleChange } handleSubmit={ this.handleSubmit } handleBusMove={ this.handleBusMove } {...this.state} />
+                <SimulatorButtons handleChange={ this.handleChange } handleSubmit={ this.handleSubmit } handleBusMove={ this.handleBusMove } handleBusTurn={ this.handleBusTurn } { ...this.state } />
                 <div className="grid-container" >
                     { this.renderCarpark() }
                 </div>

@@ -1,8 +1,10 @@
 .grid-container {
 	display: grid;
-
+  background-image:url(https://image.shutterstock.com/image-photo/empty-parking-lots-aerial-view-600w-517414873.jpg);
+  background-repeat: no-repeat;
 	grid-template-rows: repeat(5, 1fr);
-	grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  background-size: cover;
 	/* grid-gap: 2vw; */
 	width: 70%;
 	padding: 35px 0;

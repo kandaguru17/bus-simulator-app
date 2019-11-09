@@ -16,7 +16,7 @@ export default class Bus extends Component {
 
         const face = busFaceClasses[this.props.busFace];
         return (
-            <img className={ `${face}` } src={ `${this.IMG_CDN}` } style={ { width: '100px', height: '100px' } }></img>
+            <img className={ `${face}` } src={ `${this.IMG_CDN}` } style={ { width: '100px', height: '100px' } } alt='bus'></img>
         )
     }
 }
