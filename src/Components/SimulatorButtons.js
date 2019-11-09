@@ -67,7 +67,7 @@ export default class SimulatorButtons extends Component {
 
                                 {/* <Form.Field control="input" type="text" placeholder="Facing direction" onChange={ this.handleChange } name='busFace' width={ 4 } autoComplete="off" required/> */}
 
-                                <Dropdown search name='busFace' width={ 3 }  onChange={ this.handleDropDwn } placeholder="Facing direction" options={this.renderDropDwnOptions()} style={{marginBottom:'25px'}}
+                                <Dropdown search selection name='busFace' width={ 3 }  onChange={ this.handleDropDwn } placeholder="Facing direction" options={this.renderDropDwnOptions()} style={{marginBottom:'25px'}}
                                 />
 
                                 <Form.Field control={ Button } centered="true" primary disabled={ error }  >place</Form.Field>
