@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { Button, Form, Segment, Grid, Divider, Header, Icon, Dropdown } from 'semantic-ui-react'
+import { Button, Form, Segment, Grid, Divider, Header, Icon, Dropdown,Responsive } from 'semantic-ui-react'
 
 export default class SimulatorButtons extends Component {
+
+    constructor(props){
+        super(props);
+
+    }
+
 
     handleInputChange = (e) => {
         this.props.handleInputChange(e);
@@ -42,6 +48,9 @@ export default class SimulatorButtons extends Component {
     this.props.handleDropDwn(value);
     }
 
+    handleReport=()=>{
+        this.props.handleReport();
+    }
 
     render() {
 
@@ -56,22 +65,26 @@ export default class SimulatorButtons extends Component {
         return (
             <Segment placeholder>
                 <Grid columns={ 2 } stackable textAlign='center'>
-                    <Divider vertical>Or</Divider>
+                <Divider vertical>Or</Divider>
                     <Grid.Row verticalAlign='middle'>
                         <Grid.Column>
                             <Form onSubmit={ this.handleSubmit } >
-
+                                
                                 <Form.Field control="input" type="number" placeholder="x-value" onChange={ this.handleInputChange } name='busX' width={ 4 } autoComplete="off" error={ errorX } required/>
-
+                                
                                 <Form.Field control="input" type="number" placeholder="y-value" onChange={ this.handleInputChange } name='busY' width={ 4 } autoComplete="off" error={ errorY } required/>
 
                                 {/* <Form.Field control="input" type="text" placeholder="Facing direction" onChange={ this.handleChange } name='busFace' width={ 4 } autoComplete="off" required/> */}
-
-                                <Dropdown search selection name='busFace' width={ 3 }  onChange={ this.handleDropDwn } placeholder="Facing direction" options={this.renderDropDwnOptions()} style={{marginBottom:'25px'}}
-                                />
-
-                                <Form.Field control={ Button } centered="true" primary disabled={ error }  >place</Form.Field>
-
+                                
+                                <Dropdown selection search name='busFace' width={ 3 }  
+                                onChange={ this.handleDropDwn } 
+                                placeholder="Facing direction" 
+                                options={this.renderDropDwnOptions()} 
+                                style={{marginBottom:'25px'}}
+                                required /> 
+                                
+                                <Form.Field control={ Button } centered="true" primary disabled={ error }  >PLACE</Form.Field>
+                                
                             </Form>
                         </Grid.Column>
                         <Grid.Column >
@@ -86,12 +99,17 @@ export default class SimulatorButtons extends Component {
                                 <Button.Or />
                                 <Button disabled={ error || !isPlaced } onClick={ () => this.handleBusTurn('RIGHT') } >RIGHT</Button>
                                 <Button.Or />
-                                <Button disabled={ error || !isPlaced }>REPORT</Button>
+                                <Button disabled={ error || !isPlaced } onClick={this.handleReport}>REPORT</Button>
                             </Button.Group>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </Segment>
+            {/* <Responsive
+              {...Responsive.onlyMobile}
+              as={Button}
+              content='Mobile view not supported'
+            />*/}
+            </Segment> 
         )
     }
 }

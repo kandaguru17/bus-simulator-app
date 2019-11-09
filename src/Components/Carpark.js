@@ -12,6 +12,11 @@ export default class Carpark extends Component {
         isPlaced: false
     }
 
+    componentDidUpdate(prevProps,prevState){
+        if(prevState.isPlaced && !this.state.isPlaced){
+            this.setState({...prevState,isPlaced:true}) ;
+        }
+    }
 
     renderCarpark = () => {
 
@@ -26,23 +31,31 @@ export default class Carpark extends Component {
 
     handleInputChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value,
+            [e.target.name]: parseInt(e.target.value),
             isPlaced: false
         });
     }
 
     handleDropDwn=(value)=>{
-        this.setState({busFace:value});
+        this.setState({busFace:value,isPlaced: false});
     }
 
     handleSubmit = (e) => {
+        const {target}=e;
         e.preventDefault();
-        this.setState(prevState => ({
-            busX: parseInt(prevState.busX),
-            busY: parseInt(prevState.busY),
-            busFace: prevState.busFace ? prevState.busFace.toUpperCase() : 'EAST',
-            isPlaced: true
-        }))
+        // this.setState(prevState => ({
+        //     busX: parseInt(prevState.busX),
+        //     busY: parseInt(prevState.busY),
+        //     busFace: prevState.busFace ? prevState.busFace.toUpperCase() : 'EAST',
+        //     isPlaced: true
+        // }));
+
+        this.setState({
+            busX:parseInt(document.getElementsByName('busX')[0].value),
+            busY:parseInt(document.getElementsByName('busY')[0].value),
+            busFace:document.querySelector('.selection').innerText,
+            isPlaced:true
+        });
     }
 
     handleBusMove = () => {
@@ -63,6 +76,11 @@ export default class Carpark extends Component {
 
     }
 
+    handleReport=()=>{
+        const { busX, busY, busFace } = this.state;
+        window.confirm(`Bus located at x:${busX} y:${busY} facing ${busFace}`);
+    }
+
     render() {
 
         return (
@@ -72,8 +90,8 @@ export default class Carpark extends Component {
                 handleBusMove={ this.handleBusMove } 
                 handleBusTurn={ this.handleBusTurn } 
                 handleDropDwn={this.handleDropDwn}
+                handleReport={this.handleReport}
                 { ...this.state } />
-
                 <div className="grid-container" >
                     { this.renderCarpark() }
                 </div>
