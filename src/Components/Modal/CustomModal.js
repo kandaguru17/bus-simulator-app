@@ -8,7 +8,6 @@ export default class CustomModal extends Component {
     handleOpen = () => this.setState({ modalOpen: true })
     handleClose = () => this.setState({ modalOpen: false })
 
-
     render() {
         const { disabled, busX, busY, busFace } = this.props;
         return (

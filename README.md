@@ -1,3 +1,65 @@
+## Bus Simulator App
+
+A simulator app that enables the user to take control over the bus that is parked in a car park.<br/>
+
+### Features
+
+### PLACE
+
+Enables the user to place the bus in the car park by specifying x-coOrd (mandatory) y-coOrd(mandatory) and the busFace(defaulted to EAST when not specified).<br/>
+
+### MOVE
+
+Allows the user to move the bus one unit forward.<br/>
+
+### LEFT RIGHT
+
+Turn the bus 90 degrees left or right to the left in accordance to the current facing directions
+
+### REPORT
+
+Announces the current location of the bus including the direction it is facing.
+
+## TEST DATA TO EXCERCISE
+
+### TC1
+
+PLACE 0 0 NORTH
+MOVE
+MOVE
+MOVE
+MOVE (At this point MOVE controller will be disabled)
+RIGHT
+
+REPORT The Current Position of the Bus is ( 0 , 4 , EAST ).
+
+### TC2
+
+PLACE 4 2 WEST
+MOVE
+MOVE
+RIGHT
+PLACE 4 4 NORTH (At this point MOVE controller will be disabled)
+LEFT
+MOVE
+REPORT The Current Position of the Bus is ( 3 , 4 , WEST ).
+
+### TC3
+
+PLACE 0 0 (Default Facing Direction is set to EAST)
+REPORT The Current Position of the Bus is ( 0 , 0 , EAST ).
+
+### TC4
+
+PLACE -1 -1 EAST (error message shown and place button disabled)
+
+### TC5
+
+On Application refresh all the Controllers should be disabled.
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

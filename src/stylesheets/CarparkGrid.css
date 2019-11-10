@@ -1,12 +1,12 @@
 .grid-container {
 	display: grid;
-	background-image: url(https://wooden.alimy.us/wp-content/uploads/2018/07/parking-lot-layout-template-car-parking-lot-png-transparent-car-parking-lot-png-of-parking-lot-layout-template.jpg);
+	background-image: url(https://res.cloudinary.com/dyzh4obz4/image/upload/v1573365576/1c9901d0-4c27-49b2-9bba-589c950cd71b_pmk8cd.jpg);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: center center;
 	grid-template-rows: repeat(5, 1fr);
 	grid-template-columns: repeat(5, 1fr);
-	border-radius: 2%;
+	border-radius: 1%;
 	width: 70%;
 	padding: 35px 0;
 	border: 1px solid rgba(0, 0, 0, 0.8);

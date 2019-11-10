@@ -75,16 +75,17 @@ export default class SimulatorButtons extends Component {
         //error condition for disabling the controllers
         const { error } = this.props;
         //field validations
-        let errorX = busX > 4 || busX < 0 ? { content: 'Invalid value', pointing: 'below' } : false;
-        let errorY = busY > 4 || busY < 0 ? { content: 'Invalid value', pointing: 'below' } : false;
+        let errorX = busX > 4 || busX < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed ', pointing: 'below' } : false;
+        let errorY = busY > 4 || busY < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed', pointing: 'below' } : false;
 
         return (
             <Segment placeholder as={ Menu } fixed="top">
                 <Grid columns={ 2 } stackable textAlign='center'>
-                    <Divider vertical>Or</Divider>
+                    <Divider vertical >OR</Divider>
                     <Grid.Row verticalAlign='middle'>
                         <Grid.Column>
                             { this.handleError() }
+
                             <Form onSubmit={ this.handleSubmit } >
                                 <Form.Field
                                     control="input"
@@ -107,7 +108,7 @@ export default class SimulatorButtons extends Component {
                                     placeholder="Facing direction"
                                     options={ this.renderDropDwnOptions() }
                                     style={ { marginBottom: '25px' } }
-                                    required />
+                                />
 
                                 <Form.Field control={ Button } centered="true" primary disabled={ error }  >PLACE</Form.Field>
                             </Form>

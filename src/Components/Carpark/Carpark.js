@@ -50,10 +50,12 @@ export default class Carpark extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const busFace = document.querySelector('.selection').innerText;
+        const busFaceVal = busFace === 'Facing direction' ? 'EAST' : busFace
         this.setState({
             busX: parseInt(document.getElementsByName('busX')[0].value),
             busY: parseInt(document.getElementsByName('busY')[0].value),
-            busFace: document.querySelector('.selection').innerText,
+            busFace: busFaceVal,
             isPlaced: true
         });
     }
