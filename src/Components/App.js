@@ -1,12 +1,14 @@
-import React from 'react';
-import Carpark from './Carpark';
+import React, { Component } from 'react'
+import Carpark from './Carpark/Carpark';
 
-function App() {
-  return (
-    <div >
-      <Carpark />
-    </div>
-  );
+
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <Carpark />
+      </div>
+    );
+  }
 }
 
-export default App;

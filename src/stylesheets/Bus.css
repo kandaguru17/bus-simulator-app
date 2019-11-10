@@ -1,32 +1,37 @@
-.bus-east{
+.bus-east {
     background: url(https://res.cloudinary.com/dyzh4obz4/image/upload/v1573298155/bus_gecxxn.png) no-repeat;
-    width:32px; height:32px;
+    width: 32px;
+    height: 32px;
 }
 
-.bus-west{
+.bus-west {
 
     background: url(https://res.cloudinary.com/dyzh4obz4/image/upload/v1573298155/bus_gecxxn.png) no-repeat;
-    width:32px; height:32px;
+    width: 32px;
+    height: 32px;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
-  
+
 }
 
 .bus-north {
     background: url(https://res.cloudinary.com/dyzh4obz4/image/upload/v1573298155/bus_gecxxn.png) no-repeat;
-    width:32px; height:32px;
+    width: 32px;
+    height: 32px;
     -webkit-transform: rotate(270deg);
     -moz-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     -o-transform: rotate(270deg);
     transform: rotate(270deg);
 }
+
 .bus-south {
     background: url(https://res.cloudinary.com/dyzh4obz4/image/upload/v1573298155/bus_gecxxn.png) no-repeat;
-    width:32px; height:32px;
+    width: 32px;
+    height: 32px;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
