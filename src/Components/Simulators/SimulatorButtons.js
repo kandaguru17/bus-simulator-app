@@ -80,8 +80,8 @@ export default class SimulatorButtons extends Component {
                     <Divider vertical >OR</Divider>
                     <Grid.Row verticalAlign='middle'>
                         <Grid.Column>
-
                             <Form onSubmit={ this.handleSubmit } >
+
                                 <Form.Field
                                     control="input"
                                     type="number"
@@ -106,7 +106,11 @@ export default class SimulatorButtons extends Component {
                                     required
                                 />
 
-                                <Form.Field control={ Button } centered="true" primary disabled={ error }  >PLACE</Form.Field>
+                                <Form.Field control={ Button } centered="true" primary 
+                                disabled={ errorX||errorY || error }  >
+                                PLACE
+                                </Form.Field>
+                            
                             </Form>
                         </Grid.Column>
 
