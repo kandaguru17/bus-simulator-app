@@ -8,18 +8,16 @@ import {
     Header,
     Icon,
     Dropdown,
-    Message,
-    Menu,
+    Menu
 } from 'semantic-ui-react';
 
 import CustomModal from '../Modal/CustomModal';
 
 export default class SimulatorButtons extends Component {
 
-    state={busX:'',busY:'',busFace:''}
+    state = { busX: '', busY: '', busFace: '' }
 
     handleInputChange = (e) => {
-        this.props.handleInputChange(e);
         this.setState({
             [e.target.name]: parseInt(e.target.value)
         });
@@ -58,7 +56,6 @@ export default class SimulatorButtons extends Component {
     }
 
     handleDropDwn = (e, { value }) => {
-        this.props.handleDropDwn(value);
         this.setState({ busFace: value });
     }
 
@@ -70,12 +67,12 @@ export default class SimulatorButtons extends Component {
     render() {
 
         const { busX, busY } = this.state;
-        const {isPlaced}=this.props;
+        const { isPlaced } = this.props;
         //error condition for disabling the controllers
         const { error } = this.state;
         //field validations
-        let errorX =  busX > 4 || busX < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed ', pointing: 'below' } : false;
-        let errorY =  busY > 4 || busY < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed', pointing: 'below' } : false;
+        let errorX = busX > 4 || busX < 0 ? { content: 'Enter value between 0 and 4', pointing: 'below' } : false;
+        let errorY = busY > 4 || busY < 0 ? { content: 'Enter value between 0 and 4', pointing: 'below' } : false;
 
         return (
             <Segment placeholder as={ Menu } fixed="top">
@@ -83,7 +80,6 @@ export default class SimulatorButtons extends Component {
                     <Divider vertical >OR</Divider>
                     <Grid.Row verticalAlign='middle'>
                         <Grid.Column>
-                            {/* { this.handleError() } */}
 
                             <Form onSubmit={ this.handleSubmit } >
                                 <Form.Field

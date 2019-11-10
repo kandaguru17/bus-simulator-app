@@ -28,17 +28,6 @@ export default class Carpark extends Component {
 
     }
 
-    handleInputChange = (e) => {
-        this.setState({
-            [e.target.name]: parseInt(e.target.value),
-            isPlaced: false
-        });
-    }
-
-    handleDropDwn = (value) => {
-        this.setState({ busFace: value, isPlaced: false });
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
         const busFace = document.querySelector('.selection').innerText;
@@ -79,11 +68,9 @@ export default class Carpark extends Component {
         return (
             <>
                 <SimulatorButtons
-                    handleInputChange={ this.handleInputChange }
                     handleSubmit={ this.handleSubmit }
                     handleBusMove={ this.handleBusMove }
                     handleBusTurn={ this.handleBusTurn }
-                    handleDropDwn={ this.handleDropDwn }
                     handleReport={ this.handleReport }
                     { ...this.state } />
 
