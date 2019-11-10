@@ -14,7 +14,7 @@ Allows the user to move the bus one unit forward.<br/>
 
 ### LEFT RIGHT
 
-Turn the bus 90 degrees left or right to the left in accordance to the current facing directions
+Turn the bus 90 degrees left or right in accordance to the current facing directions
 
 ### REPORT
 
@@ -61,6 +61,6 @@ On Application refresh all the Controllers should be disabled. <br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### npm install && npm Start
+### npm install && npm start
 
 install dependencies and Start the App
