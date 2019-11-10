@@ -9,25 +9,17 @@ export default class Carpark extends Component {
         busX: '',
         busY: '',
         busFace: '',
-        isPlaced: false,
-        error: false
+        isPlaced: false
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { busX, busY } = this.state;
-        const err = (busX > 4 || busX < 0) || (busY > 4 || busY < 0)
-
         if (prevState.isPlaced && !this.state.isPlaced) {
-            if (err) {
-                return this.setState({ ...prevState, isPlaced: true, error: true });
-            }
-            this.setState({ ...prevState, isPlaced: true, error: false });
-        }
-
+            this.setState({ ...prevState, isPlaced: true,
+    });
+}
     }
 
     renderCarpark = () => {
-
         const { busX, busY, busFace, isPlaced } = this.state;
         return gridSeeder.map((it, i) => {
             const isBusPresent = (isPlaced && it.coOrdinate[0] === parseInt(busX)) && (it.coOrdinate[1] === parseInt(busY))
@@ -39,8 +31,7 @@ export default class Carpark extends Component {
     handleInputChange = (e) => {
         this.setState({
             [e.target.name]: parseInt(e.target.value),
-            isPlaced: false,
-            error: false
+            isPlaced: false
         });
     }
 
@@ -51,7 +42,7 @@ export default class Carpark extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const busFace = document.querySelector('.selection').innerText;
-        const busFaceVal = busFace === 'Facing direction' ? 'EAST' : busFace
+        const busFaceVal = busFace === 'Facing direction' ? 'EAST' : busFace;
         this.setState({
             busX: parseInt(document.getElementsByName('busX')[0].value),
             busY: parseInt(document.getElementsByName('busY')[0].value),
@@ -94,7 +85,6 @@ export default class Carpark extends Component {
                     handleBusTurn={ this.handleBusTurn }
                     handleDropDwn={ this.handleDropDwn }
                     handleReport={ this.handleReport }
-                    error={ this.error }
                     { ...this.state } />
 
                 <div className="grid-container" style={ { marginTop: 300 } } >

@@ -9,16 +9,22 @@ import {
     Icon,
     Dropdown,
     Message,
-    Menu
+    Menu,
 } from 'semantic-ui-react';
 
 import CustomModal from '../Modal/CustomModal';
 
 export default class SimulatorButtons extends Component {
 
+    state={busX:'',busY:'',busFace:''}
+
     handleInputChange = (e) => {
         this.props.handleInputChange(e);
+        this.setState({
+            [e.target.name]: parseInt(e.target.value)
+        });
     }
+
 
     handleSubmit = (e) => {
         this.props.handleSubmit(e);
@@ -53,30 +59,23 @@ export default class SimulatorButtons extends Component {
 
     handleDropDwn = (e, { value }) => {
         this.props.handleDropDwn(value);
+        this.setState({ busFace: value });
     }
 
     handleReport = () => {
         this.props.handleReport();
     }
 
-    handleError = () => {
-        if (this.props.error) {
-            return (
-                <Message negative width={ 4 }>
-                    <p>Invalid co-ordinates please revise the values</p>
-                </Message>
-            )
-        }
-    }
 
     render() {
 
-        const { busX, busY, isPlaced } = this.props;
+        const { busX, busY } = this.state;
+        const {isPlaced}=this.props;
         //error condition for disabling the controllers
-        const { error } = this.props;
+        const { error } = this.state;
         //field validations
-        let errorX = busX > 4 || busX < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed ', pointing: 'below' } : false;
-        let errorY = busY > 4 || busY < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed', pointing: 'below' } : false;
+        let errorX =  busX > 4 || busX < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed ', pointing: 'below' } : false;
+        let errorY =  busY > 4 || busY < 0 ? { content: 'Enter value between 0 and 4,the Bus might not be placed', pointing: 'below' } : false;
 
         return (
             <Segment placeholder as={ Menu } fixed="top">
@@ -84,7 +83,7 @@ export default class SimulatorButtons extends Component {
                     <Divider vertical >OR</Divider>
                     <Grid.Row verticalAlign='middle'>
                         <Grid.Column>
-                            { this.handleError() }
+                            {/* { this.handleError() } */}
 
                             <Form onSubmit={ this.handleSubmit } >
                                 <Form.Field
@@ -103,11 +102,12 @@ export default class SimulatorButtons extends Component {
                                     name='busY' width={ 4 } autoComplete="off"
                                     error={ errorY || error } required />
 
-                                <Dropdown selection search name='busFace' width={ 4 }
+                                <Dropdown search selection name='busFace'
                                     onChange={ this.handleDropDwn }
                                     placeholder="Facing direction"
                                     options={ this.renderDropDwnOptions() }
                                     style={ { marginBottom: '25px' } }
+                                    required
                                 />
 
                                 <Form.Field control={ Button } centered="true" primary disabled={ error }  >PLACE</Form.Field>
