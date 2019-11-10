@@ -24,41 +24,38 @@ Announces the current location of the bus including the direction it is facing.
 
 ### TC1
 
-PLACE 0 0 NORTH
-MOVE
-MOVE
-MOVE
-MOVE (At this point MOVE controller will be disabled)
-RIGHT
+PLACE 0 0 NORTH <br/>
+MOVE <br/>
+MOVE <br/>
+MOVE<br/>
+MOVE (At this point MOVE controller will be disabled) <br/>
+RIGHT<br/>
 
-REPORT The Current Position of the Bus is ( 0 , 4 , EAST ).
+REPORT The Current Position of the Bus is ( 0 , 4 , EAST ).<br/>
 
 ### TC2
 
-PLACE 4 2 WEST
-MOVE
-MOVE
-RIGHT
-PLACE 4 4 NORTH (At this point MOVE controller will be disabled)
-LEFT
-MOVE
-REPORT The Current Position of the Bus is ( 3 , 4 , WEST ).
+PLACE 4 2 WEST <br/>
+MOVE <br/>
+MOVE <br/>
+RIGHT <br/>
+PLACE 4 4 NORTH (At this point MOVE controller will be disabled) <br/>
+LEFT <br/>
+MOVE <br/>
+REPORT The Current Position of the Bus is ( 3 , 4 , WEST ). <br/>
 
 ### TC3
 
-PLACE 0 0 (Default Facing Direction is set to EAST)
-REPORT The Current Position of the Bus is ( 0 , 0 , EAST ).
+PLACE 0 0 (Default Facing Direction is set to EAST) <br/>
+REPORT The Current Position of the Bus is ( 0 , 0 , EAST ). <br/>
 
 ### TC4
 
-PLACE -1 -1 EAST (error message shown and place button disabled)
+PLACE -1 -1 EAST (error message shown and place button disabled) <br/>
 
 ### TC5
 
-On Application refresh all the Controllers should be disabled.
-
-
-
+On Application refresh all the Controllers should be disabled. <br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
