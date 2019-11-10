@@ -9,13 +9,21 @@ export default class Carpark extends Component {
         busX: '',
         busY: '',
         busFace: '',
-        isPlaced: false
+        isPlaced: false,
+        error:false
     }
 
     componentDidUpdate(prevProps,prevState){
-        if(prevState.isPlaced && !this.state.isPlaced){
-            this.setState({...prevState,isPlaced:true}) ;
+    const {busX,busY,busFace}=this.state;
+    const err=(busX >4 || busX < 0) || (busY > 4 || busY <0 )
+    
+     if(prevState.isPlaced && !this.state.isPlaced){
+        if(err){
+             return this.setState({...prevState,isPlaced:true,error:true});
         }
+            this.setState({...prevState,isPlaced:true,error:false}) ;
+        }
+
     }
 
     renderCarpark = () => {
@@ -32,7 +40,8 @@ export default class Carpark extends Component {
     handleInputChange = (e) => {
         this.setState({
             [e.target.name]: parseInt(e.target.value),
-            isPlaced: false
+            isPlaced: false,
+            error:false
         });
     }
 
@@ -43,13 +52,6 @@ export default class Carpark extends Component {
     handleSubmit = (e) => {
         const {target}=e;
         e.preventDefault();
-        // this.setState(prevState => ({
-        //     busX: parseInt(prevState.busX),
-        //     busY: parseInt(prevState.busY),
-        //     busFace: prevState.busFace ? prevState.busFace.toUpperCase() : 'EAST',
-        //     isPlaced: true
-        // }));
-
         this.setState({
             busX:parseInt(document.getElementsByName('busX')[0].value),
             busY:parseInt(document.getElementsByName('busY')[0].value),
@@ -91,6 +93,7 @@ export default class Carpark extends Component {
                 handleBusTurn={ this.handleBusTurn } 
                 handleDropDwn={this.handleDropDwn}
                 handleReport={this.handleReport}
+                error={this.error}
                 { ...this.state } />
                 <div className="grid-container" >
                     { this.renderCarpark() }

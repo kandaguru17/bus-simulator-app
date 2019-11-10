@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Form, Segment, Grid, Divider, Header, Icon, Dropdown,Responsive } from 'semantic-ui-react'
+import { Button, Form, Segment, Grid, Divider, Header, Icon, Dropdown,Message } from 'semantic-ui-react'
 
 export default class SimulatorButtons extends Component {
-
-    constructor(props){
-        super(props);
-
-    }
-
 
     handleInputChange = (e) => {
         this.props.handleInputChange(e);
@@ -52,15 +46,26 @@ export default class SimulatorButtons extends Component {
         this.props.handleReport();
     }
 
+    handleError=()=>{
+        if(this.props.error){
+            return(
+                <Message negative width={4}>
+                    <p>Invalid co-ordinates please revise the values</p>
+                </Message>
+            )
+        }
+    }
+
     render() {
 
         const { busX, busY, isPlaced,busFace } = this.props;
         
         //error condition for disabling the controllers
-        const error =  ((busX > 4 || busX < 0) || (busY > 4 || busY < 0));
+       //const error =  ((busX > 4 || busX < 0) || (busY > 4 || busY < 0));
+        const {error}=this.props;
        //field validations
-        let errorX =busX > 4 || busX < 0 ? { content: 'Out of bound',pointing:'below' } : false;
-        let errorY = busY > 4 || busY < 0 ? { content: 'Out of bound',pointing:'below' } : false;
+        let errorX = busX > 4 || busX < 0 ? { content: 'Invalid value',pointing:'below' } : false;
+        let errorY = busY > 4 || busY < 0 ? { content: 'Invalid value',pointing:'below' } : false;
         
         return (
             <Segment placeholder>
@@ -68,11 +73,11 @@ export default class SimulatorButtons extends Component {
                 <Divider vertical>Or</Divider>
                     <Grid.Row verticalAlign='middle'>
                         <Grid.Column>
+                        {this.handleError()}
                             <Form onSubmit={ this.handleSubmit } >
+                                <Form.Field control="input" type="number" placeholder="x-value" onChange={ this.handleInputChange } name='busX' width={ 4 } autoComplete="off" error={ errorX || error} required/>
                                 
-                                <Form.Field control="input" type="number" placeholder="x-value" onChange={ this.handleInputChange } name='busX' width={ 4 } autoComplete="off" error={ errorX } required/>
-                                
-                                <Form.Field control="input" type="number" placeholder="y-value" onChange={ this.handleInputChange } name='busY' width={ 4 } autoComplete="off" error={ errorY } required/>
+                                <Form.Field control="input" type="number" placeholder="y-value" onChange={ this.handleInputChange } name='busY' width={ 4 } autoComplete="off" error={ errorY || error } required/>
 
                                 {/* <Form.Field control="input" type="text" placeholder="Facing direction" onChange={ this.handleChange } name='busFace' width={ 4 } autoComplete="off" required/> */}
                                 
